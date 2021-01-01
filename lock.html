@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" type="text/css" href="style_me2.css">
+  <script>
+      window.onload=function loadcrs()
+   {
+     var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("i1").innerHTML= this.responseText;
+  }
+};
+xmlhttp.open("GET","user_loader.php",true);
+xmlhttp.send();
+   }
+
+       function fun1(str) {
+        if (str == "") {
+      document.getElementById("form_here").innerHTML = "";
+      return;
+    } else {
+      if(confirm("Do you want to lock DB for ".concat(str)))
+      {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("form_here").innerHTML= this.responseText;
+        }
+      };
+      xmlhttp.open("POST","abc1.php?crs_id="+str,true);
+      xmlhttp.send();
+      }
+      else
+        document.getElementById('i3').selectedIndex="0";
+    }
+  }
+
+  </script>
+     <meta charset="utf-8">
+     <title></title>
+   </head>
+   <body>
+     <div id="window">
+      <h2 align="center">LOCK</h2>
+     <form class="" onsubmit="return false">
+      <label for="">ENTER THE SUBJECT CODE TO LOCK</label>
+      <br><br><br>
+     <div id="i1">
+
+     </div>
+     </form>
+     </div>
+
+      <div style="margin: 10px;" id="form_here">
+
+       </div>
+   </body>
+ </html>
